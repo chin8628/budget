@@ -17,7 +17,7 @@
       "android": {
         "buildType": "apk"
       }
-    }
+    },
   },
   "submit": {
     "production": {}
