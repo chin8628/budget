@@ -5,13 +5,11 @@ import { Text, View } from "../../components/Themed";
 import { trpc } from "../../api";
 
 export default function TabOneScreen() {
-  const userQuery = trpc.getUser.useQuery("test");
-
-  console.log(userQuery)
+  const userQuery = trpc.getHelloWorld.useQuery();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One [{userQuery.data?.name} {userQuery.data?.id}]</Text>
+      <Text style={styles.title}>Tab One [{userQuery.data?.text}]</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
