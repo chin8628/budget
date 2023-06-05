@@ -1,12 +1,14 @@
 import { initTRPC } from "@trpc/server";
-import { createHelloWorldResolver } from './resolvers/example';
+import { helloWorldHandler } from "./handlers/example";
+import { getTransactions } from "./handlers/getTransactions";
 
 const t = initTRPC.create();
 
 export const publicProcedure = t.procedure;
 
 export const trpcRouter = t.router({
-  getHelloWorld: createHelloWorldResolver()
+  getHelloWorld: helloWorldHandler(),
+  getTransactions: getTransactions(),
 });
 
 export type TrpcRouter = typeof trpcRouter;

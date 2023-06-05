@@ -7,7 +7,7 @@ import {
 import { useFonts } from "expo-font";
 import { httpBatchLink } from "@trpc/client";
 import { SplashScreen, Stack } from "expo-router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useColorScheme } from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { trpc } from "../api";
@@ -16,11 +16,6 @@ export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
-
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)",
-};
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -62,7 +57,6 @@ function RootLayoutNav() {
         >
           <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ presentation: "modal" }} />
           </Stack>
         </ThemeProvider>
       </QueryClientProvider>

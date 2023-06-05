@@ -1,21 +1,19 @@
-import { StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
-import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 import { trpc } from "../../api";
 
 export default function TabOneScreen() {
-  const userQuery = trpc.getHelloWorld.useQuery();
+  const transactionsQuery = trpc.getTransactions.useQuery();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One [{userQuery.data?.text}]</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
+      <Text style={styles.title}>Transactions</Text>
+      <FlatList
+        data={transactionsQuery.data}
+        renderItem={({ item }) => <Text>{JSON.stringify(item)}</Text>}
+        keyExtractor={(item) => String(item.id)}
       />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
     </View>
   );
 }
