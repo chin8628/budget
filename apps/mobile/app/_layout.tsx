@@ -12,10 +12,8 @@ import { useColorScheme } from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { trpc } from "../api";
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from "expo-router";
+// Catch any errors thrown by the Layout component.
+export { ErrorBoundary } from "expo-router";
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
