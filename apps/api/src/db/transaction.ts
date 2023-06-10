@@ -1,6 +1,12 @@
 import { dbInstance } from "../prisma";
 
-export const findAllTransactions = async () => {
-  const transaction = await dbInstance.transaction.findMany({ take: 10, orderBy: { createdAt: "desc" } });
-  return transaction;
-};
+export const findAllTransactions = async (startDate: Date, endDate: Date) =>
+  dbInstance.transaction.findMany({
+    orderBy: { createdAt: "desc" },
+    where: {
+      transactionDate: {
+        lte: endDate,
+        gte: startDate,
+      },
+    },
+  });

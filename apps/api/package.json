@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev --transpile-only --respawn --exit-child src/index.ts",
+    "db": "prisma studio --schema=prisma/schema.prisma -p 8082"
   },
   "dependencies": {
     "@prisma/client": "^4.15.0",
